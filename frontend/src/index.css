@@ -1,0 +1,234 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ═══════════════════════════════════════════════════════════════
+   SugarTech Digital Twin — Global Design System
+   Premium Light Enterprise Control Room Aesthetic
+   ═══════════════════════════════════════════════════════════════ */
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --bg-base:       #f8fafc; /* Slate 50 */
+  --bg-panel:      rgba(255, 255, 255, 0.90);
+  --bg-card:       rgba(255, 255, 255, 0.95);
+  --bg-hover:      rgba(14, 165, 233, 0.04); /* Sky 500 */
+
+  --cyan:          #0284c7; /* Sky 600 */
+  --cyan-dim:      rgba(14, 165, 233, 0.08);
+  --cyan-glow:     rgba(14, 165, 233, 0.03);
+  --green:         #059669; /* Emerald 600 */
+  --green-dim:     rgba(16, 185, 129, 0.08);
+  --amber:         #d97706; /* Amber 600 */
+  --amber-dim:     rgba(245, 158, 11, 0.08);
+  --red:           #dc2626; /* Red 600 */
+  --red-dim:       rgba(239, 68, 68, 0.08);
+  --purple:        #7c3aed; /* Violet 600 */
+  --purple-dim:    rgba(139, 92, 246, 0.08);
+
+  --text-primary:  #0f172a; /* Slate 900 */
+  --text-secondary:#475569; /* Slate 600 */
+  --text-muted:    #64748b; /* Slate 500 */
+  --text-faint:    #94a3b8; /* Slate 400 */
+
+  --border:        rgba(148, 163, 184, 0.16);
+  --border-strong: rgba(14, 165, 233, 0.25);
+
+  --radius-sm:  8px;
+  --radius-md:  12px;
+  --radius-lg:  16px;
+  --radius-xl:  20px;
+
+  --shadow-panel: 0 10px 25px -5px rgba(15, 23, 42, 0.04), 0 8px 10px -6px rgba(15, 23, 42, 0.04), 0 0 0 1px rgba(14, 165, 233, 0.03);
+  --shadow-card:  0 4px 6px -1px rgba(15, 23, 42, 0.03), 0 2px 4px -2px rgba(15, 23, 42, 0.03);
+
+  --font-body: 'Inter', system-ui, -apple-system, sans-serif;
+  --font-mono: 'JetBrains Mono', 'Fira Code', monospace;
+}
+
+html, body, #root {
+  height: 100%;
+  width: 100%;
+}
+
+body {
+  background: var(--bg-base);
+  color: var(--text-primary);
+  font-family: var(--font-body);
+  font-size: 14px;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Blueprint clean engineering grid background */
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(14, 165, 233, 0.015) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(14, 165, 233, 0.015) 1px, transparent 1px);
+  background-size: 30px 30px;
+  pointer-events: none;
+  z-index: 0;
+}
+
+#root { position: relative; z-index: 1; }
+
+/* ── Scrollbar ─────────────────────────────────────────────── */
+::-webkit-scrollbar { width: 5px; height: 5px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: rgba(14, 165, 233, 0.15); border-radius: 99px; }
+::-webkit-scrollbar-thumb:hover { background: rgba(14, 165, 233, 0.3); }
+
+/* ── Layout ────────────────────────────────────────────────── */
+.app { display: flex; flex-direction: column; min-height: 100vh; }
+.main-content { flex: 1; padding: 0 24px 24px; }
+
+/* ── Panel / Card ──────────────────────────────────────────── */
+.panel {
+  background: var(--bg-panel);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  padding: 20px;
+  box-shadow: var(--shadow-panel);
+  backdrop-filter: blur(8px);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.panel-title {
+  font-size: 11px;
+  font-weight: 700;
+  color: var(--cyan);
+  text-transform: uppercase;
+  letter-spacing: 1.2px;
+  margin-bottom: 16px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+/* ── Status Colors ─────────────────────────────────────────── */
+.status-green  { color: var(--green); }
+.status-amber  { color: var(--amber); }
+.status-red    { color: var(--red); }
+.status-cyan   { color: var(--cyan); }
+.status-purple { color: var(--purple); }
+
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 10px;
+  font-weight: 700;
+  padding: 3px 8px;
+  border-radius: 6px;
+  font-family: var(--font-mono);
+}
+.badge-green  { background: var(--green-dim);  color: var(--green); border: 1px solid rgba(16, 185, 129, 0.15); }
+.badge-amber  { background: var(--amber-dim);  color: var(--amber); border: 1px solid rgba(245, 158, 11, 0.15); }
+.badge-red    { background: var(--red-dim);    color: var(--red); border: 1px solid rgba(239, 68, 68, 0.15); }
+.badge-cyan   { background: var(--cyan-dim);   color: var(--cyan); border: 1px solid rgba(14, 165, 233, 0.15); }
+.badge-purple { background: var(--purple-dim); color: var(--purple); border: 1px solid rgba(139, 92, 246, 0.15); }
+
+/* ── Animations ────────────────────────────────────────────── */
+@keyframes pulse-dot {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50%       { opacity: 0.4; transform: scale(0.7); }
+}
+@keyframes ring-pulse {
+  0%   { box-shadow: 0 0 0 0 rgba(239,68,68,0.5); }
+  70%  { box-shadow: 0 0 0 6px rgba(239,68,68,0); }
+  100% { box-shadow: 0 0 0 0 rgba(239,68,68,0); }
+}
+@keyframes value-flash {
+  0%   { background: rgba(14,165,233,0.12); }
+  100% { background: transparent; }
+}
+@keyframes flow-right {
+  0%   { stroke-dashoffset: 20; }
+  100% { stroke-dashoffset: 0; }
+}
+
+.slide-in { animation: slide-in 0.3s ease; }
+.fade-in  { animation: fade-in  0.4s ease; }
+
+/* Pulsing live dot */
+.pulse-dot {
+  display: inline-block;
+  width: 8px; height: 8px;
+  border-radius: 50%;
+  animation: pulse-dot 1.8s ease-in-out infinite;
+}
+.pulse-dot.green  { background: var(--green);  box-shadow: 0 0 6px var(--green); }
+.pulse-dot.amber  { background: var(--amber);  box-shadow: 0 0 6px var(--amber); }
+.pulse-dot.red    { background: var(--red);    box-shadow: 0 0 6px var(--red); animation: ring-pulse 1.4s ease-out infinite; }
+
+/* ── Grid helpers with exact spacing ───────────────────────── */
+.grid-2 { display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; }
+.grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+.grid-4 { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; }
+.grid-5 { display: grid; grid-template-columns: repeat(5, 1fr); gap: 16px; }
+.grid-6 { display: grid; grid-template-columns: repeat(6, 1fr); gap: 16px; }
+
+@media (max-width: 1440px) {
+  .grid-6 { grid-template-columns: repeat(3, 1fr); }
+  .grid-5 { grid-template-columns: repeat(3, 1fr); }
+}
+@media (max-width: 1024px) {
+  .grid-5, .grid-4 { grid-template-columns: repeat(2, 1fr); }
+  .grid-3 { grid-template-columns: repeat(2, 1fr); }
+  .grid-6 { grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 640px) {
+  .grid-6, .grid-5, .grid-4, .grid-3, .grid-2 { grid-template-columns: 1fr; }
+}
+
+/* ── Value flash on update ─────────────────────────────────── */
+.value-updated {
+  animation: value-flash 0.8s ease-out;
+  border-radius: 4px;
+}
+
+/* ── Mono number display ───────────────────────────────────── */
+.mono { font-family: var(--font-mono); }
+
+/* ── Divider ───────────────────────────────────────────────── */
+.divider {
+  height: 1px;
+  background: var(--border);
+  margin: 16px 0;
+}
+
+/* ── SVG Pipeline Flow Animations ──────────────────────────── */
+.pipe-flow {
+  stroke-dasharray: 8 4;
+  animation: flow-right 3.5s linear infinite;
+  transition: stroke 0.25s, stroke-width 0.25s, filter 0.25s;
+}
+
+.pipe-flow-fast {
+  stroke-dasharray: 8 4;
+  animation: flow-right 0.8s linear infinite;
+  stroke-width: 4.5px !important;
+  transition: stroke 0.25s, stroke-width 0.25s, filter 0.25s;
+}
+
+/* Specific glows based on fluid types */
+.glow-cyan {
+  filter: drop-shadow(0 0 6px rgba(14, 165, 233, 0.7));
+}
+.glow-amber {
+  filter: drop-shadow(0 0 6px rgba(245, 158, 11, 0.7));
+}
+.glow-red {
+  filter: drop-shadow(0 0 6px rgba(239, 68, 68, 0.7));
+}
+.glow-purple {
+  filter: drop-shadow(0 0 6px rgba(139, 92, 246, 0.7));
+}
+
+/* Equipment transition helpers */
+.equipment-element {
+  transition: stroke 0.3s ease, fill 0.3s ease, transform 0.3s ease, stroke-width 0.3s ease;
+}

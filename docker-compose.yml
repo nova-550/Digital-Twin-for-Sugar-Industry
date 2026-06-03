@@ -1,0 +1,23 @@
+version: '3.8'
+
+services:
+  sugar-digital-twin:
+    build: .
+    container_name: sugar_digital_twin
+    ports:
+      - "8501:8501"
+    volumes:
+      - sugar_data:/app/data
+    restart: unless-stopped
+    environment:
+      - TZ=Asia/Kolkata
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8501/_stcore/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 15s
+
+volumes:
+  sugar_data:
+    name: sugar_twin_data
