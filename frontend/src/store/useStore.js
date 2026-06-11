@@ -15,8 +15,8 @@ export const useStore = create((set, get) => {
     // Connects to high-frequency WebSocket telemetry broadcast
     connectWs: () => {
       if (ws && ws.readyState === WebSocket.OPEN) return;
-
-      const wsUrl = 'ws://localhost:8000/ws/live';
+      const wsProto = window.location.protocol === 'https:' ? 'wss:' : 'ws:';
+      const wsUrl = `${wsProto}//${window.location.host}/ws/live`;
       ws = new WebSocket(wsUrl);
 
       ws.onopen = () => {
